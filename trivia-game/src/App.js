@@ -52,6 +52,9 @@ class TriviaGrid extends React.Component {
 class StatsCard extends React.Component {
   render() {
     let percent = 0; 
+    if(this.props.correctScore > 0) {
+      percent = 100; 
+    }
     if(this.props.incorrectScore > 0) {
       percent = this.props.correctScore*100/(this.props.incorrectScore+this.props.correctScore);
     }
@@ -61,6 +64,7 @@ class StatsCard extends React.Component {
         <h5>Questions Correct: {this.props.correctScore}</h5>
         <h5>Questions Incorrect: {this.props.incorrectScore} </h5>
         <h5>Percentage: {percent}%</h5>
+        <h5>Questions Unanswered: {20-this.props.correctScore-this.props.incorrectScore}</h5>
       </div>
     );
   }
